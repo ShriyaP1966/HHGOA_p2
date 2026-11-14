@@ -16,8 +16,6 @@
 
 </div>
 
-> **Live demo:** _coming soon (deploying to Render)_
-
 ---
 
 ## What it does
@@ -46,8 +44,8 @@ curl -X POST http://127.0.0.1:8000/analyze \
 - **On-chain proof.** Optional write to the `AIRecord` Solidity contract; the response includes the transaction hash, block number and an Etherscan link.
 - **Safe to expose publicly.** Blockchain writes require an `X-API-Key` header, are rate limited per client, and use a nonce lock so concurrent requests cannot collide.
 - **Starts anywhere.** The Sepolia connection is made on first use, so the API boots without credentials and `/health` never depends on the RPC.
-- **Tested.** 40 pytest tests (web3 mocked, no wallet or network needed), ruff linting, and a GitHub Actions pipeline that also builds the Docker image.
-- **Deploy-ready.** Dockerfile, health check, non-root container, and a one-click Render blueprint.
+- **Tested.** 44 pytest tests (web3 mocked, no wallet or network needed), ruff linting, and a GitHub Actions pipeline that also builds the Docker image.
+- **Deploy-ready.** Dockerfile, health check, non-root container, a Render blueprint, and Vercel support.
 
 ## How it works
 

@@ -8,6 +8,7 @@
 - The Sepolia connection is now made lazily on first use instead of at import time, so the app starts without credentials and `/health` always works.
 - `requirements.txt` rewritten as UTF-8 with direct dependencies only (dropped the Windows-only `pywin32`).
 - Helper scripts moved to `scripts/` and now share the ABI and config with the app.
+- A blank `CONTRACT_ADDRESS` or an invalid `WRITE_RATE_LIMIT` / `WRITE_RATE_WINDOW_SECONDS` now falls back to the default instead of crashing.
 
 ### Added
 - `API_KEY` protection (`X-API-Key` header) and a per-client rate limit on `save_to_blockchain` requests.

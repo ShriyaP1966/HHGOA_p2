@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: sepolia-sentiment-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: SEPOLIA_RPC_URL
+        sync: false
+      - key: SEPOLIA_PRIVATE_KEY
+        sync: false
+      - key: API_KEY
+        sync: false

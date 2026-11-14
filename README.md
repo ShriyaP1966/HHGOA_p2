@@ -4,6 +4,7 @@
 
 **Text sentiment analysis over REST, with optional tamper-evident records on the Ethereum Sepolia testnet.**
 
+[![Live demo](https://img.shields.io/badge/live%20demo-vercel-000000?logo=vercel&logoColor=white)](https://sepolia-sentiment-api.vercel.app/docs)
 [![CI](https://github.com/ShriyaP1966/sepolia-sentiment-api/actions/workflows/ci.yml/badge.svg)](https://github.com/ShriyaP1966/sepolia-sentiment-api/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/github/license/ShriyaP1966/sepolia-sentiment-api)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.12%20%7C%203.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
@@ -16,7 +17,17 @@
 
 </div>
 
-> **Live demo:** _coming soon (deploying to Render)_
+> **Live demo:** <https://sepolia-sentiment-api.vercel.app> · **Interactive docs:** <https://sepolia-sentiment-api.vercel.app/docs>
+>
+> Try it without installing anything:
+>
+> ```bash
+> curl -X POST https://sepolia-sentiment-api.vercel.app/analyze \
+>   -H "Content-Type: application/json" \
+>   -d '{"text": "This is not good"}'
+> ```
+>
+> Saving to the blockchain on the hosted demo needs an API key, so that part is disabled for the public.
 
 ---
 

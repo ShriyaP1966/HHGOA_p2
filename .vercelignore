@@ -1,0 +1,12 @@
+.git
+.github
+tests/
+scripts/
+contracts/
+Dockerfile
+.dockerignore
+render.yaml
+requirements-dev.txt
+pytest.ini
+ruff.toml
+*.md

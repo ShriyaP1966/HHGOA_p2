@@ -50,23 +50,23 @@ curl -X POST http://127.0.0.1:8000/analyze \
 ## How it works
 
 ```mermaid
-sequenceDiagram
-    participant C as Client
-    participant A as FastAPI
-    participant V as VADER
-    participant S as Sepolia (AIRecord)
+flowchart TD
+    req([Client sends<br/>POST /analyze]) --> validate[Validate input]
+    validate --> score[Score text with VADER<br/>label + score]
+    score --> choice{Save to<br/>blockchain?}
 
-    C->>A: POST /analyze {text, save_to_blockchain}
-    A->>A: validate input
-    A->>V: score text
-    V-->>A: label + compound score
-    alt save_to_blockchain = true
-        A->>A: check X-API-Key + rate limit
-        A->>S: saveRecord(text, label)
-        S-->>A: receipt (tx hash, block)
-    end
-    A-->>C: label, score, optional tx details
+    choice -- No --> res([Return JSON result])
+    choice -- Yes --> guard[Check API key<br/>and rate limit]
+    guard --> send[Sign and send<br/>saveRecord transaction]
+    send --> contract[(AIRecord contract<br/>on Sepolia)]
+    contract --> receipt[Receipt:<br/>tx hash and block]
+    receipt --> res
+
+    classDef chain fill:#627EEA,stroke:#3C4FB3,color:#FFFFFF
+    class guard,send,contract,receipt chain
 ```
+
+Steps in blue only run when `save_to_blockchain` is `true`. A plain analysis never touches the blockchain.
 
 ## Quick start
 
